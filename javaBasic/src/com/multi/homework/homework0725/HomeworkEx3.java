@@ -1,4 +1,4 @@
-package com.multi.homework0725;
+package com.multi.homework.homework0725;
 
 public class HomeworkEx3 {
 
