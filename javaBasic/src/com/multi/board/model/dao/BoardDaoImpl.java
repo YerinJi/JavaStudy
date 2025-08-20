@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class BoardDaoImpl implements BoardDao {
     private static BoardDao boardDao = new BoardDaoImpl();
 
