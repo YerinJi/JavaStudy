@@ -35,7 +35,6 @@ public class CsvImporter {
                 conn.commit();
                 System.out.println("CSV import 완료!");
             } catch (Exception e) {
-                conn.rollback();
                 throw e;
             }
         }
