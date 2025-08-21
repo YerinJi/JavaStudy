@@ -1,10 +1,15 @@
 package com.multi.travel;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
 public class TravelService {
-    private TravelDAO dao = new TravelDAO();
+    private TravelDAO dao;
+
+    public TravelService(Connection conn) {
+        this.dao = new TravelDAO(conn);
+    }
 
 //    1. 전체 페이지
     public List<TravelVO> getAllPage(int page, int pageSize) throws SQLException {

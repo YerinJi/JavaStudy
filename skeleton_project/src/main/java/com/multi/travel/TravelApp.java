@@ -1,12 +1,19 @@
 package com.multi.travel;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Scanner;
 
 public class TravelApp {
+    static final String URL = "jdbc:mysql://localhost:3306/travel_db?useSSL=false&serverTimezone=Asia/Seoul";
+    static final String USER = "root";
+    static final String PASS = "1234";
+
     public static void main(String[] args) {
-        TravelService service = new TravelService();
-        try(Scanner sc = new Scanner(System.in)) {
+
+        try(Connection conn = DriverManager.getConnection(URL, USER, PASS); Scanner sc = new Scanner(System.in)) {
+            TravelService service = new TravelService(conn);
             while(true) {
                 System.out.println("\n== TravelApp ==");
                 System.out.println("1. 전체 목록");
