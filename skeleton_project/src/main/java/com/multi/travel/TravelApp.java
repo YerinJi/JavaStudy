@@ -105,6 +105,7 @@ public class TravelApp {
         System.out.println("관광지를 삭제합니다.");
         System.out.print("삭제할 관광지의 번호를 입력해주세요: ");
         int no =  sc.nextInt();
+        sc.nextLine();
         service.deleteTravel(no);
         System.out.println("삭제완료");
     }
