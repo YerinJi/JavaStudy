@@ -1,5 +1,8 @@
 package com.multi.travel;
 
+import com.multi.model.service.TravelService;
+import com.multi.model.service.TravelServiceImpl;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -13,7 +16,7 @@ public class TravelApp {
     public static void main(String[] args) {
 
         try(Connection conn = DriverManager.getConnection(URL, USER, PASS); Scanner sc = new Scanner(System.in)) {
-            TravelService service = new TravelService(conn);
+            TravelService service = new TravelServiceImpl(conn);
             while(true) {
                 System.out.println("\n== TravelApp ==");
                 System.out.println("1. 전체 목록");
@@ -57,7 +60,7 @@ public class TravelApp {
     private static void inputDistrict(TravelService service, Scanner sc) throws SQLException {
         System.out.print("권역 입력(수도권/충청권/전라권/경상권/강원권/제주권): ");
         String district = sc.nextLine();
-        var rows = service.getDistrictpage(district);
+        var rows = service.getDistrictPage(district);
         System.out.println(rows);
     }
 

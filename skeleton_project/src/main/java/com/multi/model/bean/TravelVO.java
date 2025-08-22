@@ -1,4 +1,4 @@
-package com.multi.travel;
+package com.multi.model.bean;
 
 public class TravelVO {
     private int no;

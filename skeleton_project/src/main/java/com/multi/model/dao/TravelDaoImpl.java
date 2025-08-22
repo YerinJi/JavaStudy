@@ -1,17 +1,23 @@
-package com.multi.travel;
+package com.multi.model.dao;
 
-import java.sql.*;
-import java.util.*;
+import com.multi.model.bean.TravelVO;
 
-public class TravelDAO {
-    private Connection conn;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-    public TravelDAO(Connection conn) {
+public class TravelDaoImpl implements TravelDao{
+    private final Connection conn;
+
+    public TravelDaoImpl(Connection conn) {
         this.conn = conn;
     }
 
-//    새로운 관광지 추가
-    public int createTravel(String district, String title, String description, String address, String phone) {
+    @Override
+    public int createTravel(String district, String title, String description, String address, String phone) throws SQLException {
         String query = "INSERT INTO travel(district,title,description,address,phone) VALUES (?,?,?,?,?)";
         try( PreparedStatement ps = conn.prepareStatement(query)){
             ps.setString(1, district);
@@ -27,7 +33,7 @@ public class TravelDAO {
         }
     }
 
-//    페이지별로 전체 목록을 보여주기
+    @Override
     public List<TravelVO> findAll(int page, int pageSize) throws SQLException {
         String query = "SELECT * FROM travel ORDER BY no ASC LIMIT ? OFFSET ?";
         int offset = (page - 1) * pageSize;
@@ -44,7 +50,8 @@ public class TravelDAO {
         }
         return travels;
     }
-//    권역별 관광지 목록 보여주기
+
+    @Override
     public List<TravelVO> searchDistrict(String district) throws SQLException {
         String query = "SELECT * FROM travel WHERE district LIKE ?";
 
@@ -63,7 +70,7 @@ public class TravelDAO {
         return travels;
     }
 
-// keyword 검색결과를 목록으로 보여주기
+    @Override
     public List<TravelVO> search(String keyword) throws SQLException {
         String like = "%" + keyword + "%";
         String query = "SELECT * FROM travel " +
@@ -80,7 +87,7 @@ public class TravelDAO {
         }
     }
 
-//    데이터 수정하기
+    @Override
     public int update(int no, String district, String title, String description, String address, String phone) throws SQLException {
         String query = "UPDATE travel SET district=?, title=?, description=?, address=?, phone=? WHERE no=?";
         try(PreparedStatement ps = conn.prepareStatement(query)) {
@@ -97,7 +104,7 @@ public class TravelDAO {
         }
     }
 
-//    데이터 삭제하기
+    @Override
     public int delete(int no) throws SQLException {
         String sql = "DELETE FROM travel WHERE no=?";
         try(PreparedStatement ps = conn.prepareStatement(sql)){
@@ -109,16 +116,14 @@ public class TravelDAO {
         }
     }
 
-
     private TravelVO allRow(ResultSet rs) throws SQLException {
-        TravelVO travelVO = new TravelVO();
-        travelVO.setNo(rs.getInt("no"));
-        travelVO.setDistrict(rs.getString("district"));
-        travelVO.setTitle(rs.getString("title"));
-        travelVO.setDescription(rs.getString("description"));
-        travelVO.setAddress(rs.getString("address"));
-        travelVO.setPhone(rs.getString("phone"));
-        return travelVO;
+        TravelVO v = new TravelVO();
+        v.setNo(rs.getInt("no"));
+        v.setDistrict(rs.getString("district"));
+        v.setTitle(rs.getString("title"));
+        v.setDescription(rs.getString("description"));
+        v.setAddress(rs.getString("address"));
+        v.setPhone(rs.getString("phone"));
+        return v;
     }
-
 }
