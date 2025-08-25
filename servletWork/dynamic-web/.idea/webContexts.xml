@@ -5,6 +5,7 @@
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/basicJsp/memberList.jsp" value="file://$PROJECT_DIR$/src/main/webapp/basicJsp" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/basicJsp/second.jsp" value="file://$PROJECT_DIR$/src/main/webapp/basicJsp" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/usebean/memberCollection.jsp" value="file://$PROJECT_DIR$/src/main/webapp/usebean" />
       </map>
     </option>
   </component>
