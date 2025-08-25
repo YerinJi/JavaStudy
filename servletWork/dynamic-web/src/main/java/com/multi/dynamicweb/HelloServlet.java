@@ -1,4 +1,4 @@
-package org.scoula.dynamicweb;
+package com.multi.dynamicweb;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

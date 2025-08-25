@@ -1,4 +1,4 @@
-package org.scoula.dynamicweb;
+package com.multi.dynamicweb;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
