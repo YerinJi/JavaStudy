@@ -19,7 +19,7 @@
 
 <div class="container mt-3">
   <h2>Member form</h2>
-  <form action="memberCollection.jsp" method="post">
+  <form action="memberuseWrite.jsp" method="post">
 
     <div class="mb-3 mt-3">
       <label for="name">Name:</label>
@@ -31,8 +31,8 @@
     </div>
 
     <div class="mb-3">
-      <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+      <label for="password">Password:</label>
+      <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
     </div>
     <div class="form-check mb-3">
       <label class="form-check-label">
