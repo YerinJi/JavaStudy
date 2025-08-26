@@ -1,37 +1,36 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: yerin
-  Date: 2025-08-25
-  Time: 오후 3:07
-  To change this template use File | Settings | File Templates.
---%>
-<!-- header.jsp -->
-<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+
+<%@ page session="true" %>
+<%--<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>--%>
+
 <!DOCTYPE html>
 <html>
 <head>
-  <title>공통 헤더</title>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>MySite</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="page1.jsp">Page 1</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="page2.jsp">Page 2</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="page3.jsp">Page 3</a>
-      </li>
-    </ul>
-  </div>
+    <a class="navbar-brand" href="../index.jsp">MySite</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+            <%
+                String user = (String) session.getAttribute("user");
+                if (user != null) {
+            %>
+            <li class="nav-item"><a class="nav-link" href="board.jsp">FreeBoard</a></li>
+            <li class="nav-item"><a class="nav-link" href="notice.jsp">Notice</a></li>
+            <li class="nav-item"><a class="nav-link" href="logout.jsp">Logout</a></li>
+            <%
+            } else {
+            %>
+            <li class="nav-item"><a class="nav-link" href="login.jsp">Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="signup.jsp">Sign Up</a></li>
+            <%
+                }
+            %>
+        </ul>
+    </div>
 </nav>
-<div class="container mt-4">
-
