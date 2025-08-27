@@ -3,8 +3,11 @@
   <component name="WebContextManager">
     <option name="state">
       <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/assignment0826/common/top.jsp" value="file://$PROJECT_DIR$/src/main/webapp/assignment0826/common" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/basicJsp/memberList.jsp" value="file://$PROJECT_DIR$/src/main/webapp/basicJsp" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/basicJsp/second.jsp" value="file://$PROJECT_DIR$/src/main/webapp/basicJsp" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/basicObject/objectEx2.jsp" value="file://$PROJECT_DIR$/src/main/webapp/basicObject" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/board/login.jsp" value="file://$PROJECT_DIR$/src/main/webapp/board" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/usebean/memberCollection.jsp" value="file://$PROJECT_DIR$/src/main/webapp/usebean" />
       </map>
     </option>
