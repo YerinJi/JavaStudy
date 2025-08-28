@@ -8,6 +8,16 @@
 <meta http-equiv="X-UA-Compatible" content="IE=10" />
 <meta http-equiv="imagetoolbar" content="no" />
 <meta name="copyright" />
+ <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+         crossorigin="anonymous">
+ </script>
+ <script>
+  $(function() {
+   alert("hello JQuery JS!");
+  })
+
+ </script>
 <link href="../css/contents.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
