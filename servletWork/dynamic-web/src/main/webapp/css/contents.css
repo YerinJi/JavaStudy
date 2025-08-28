@@ -30,7 +30,7 @@
 .searchWrap span.bl {left:0; background:url(../img/common/bg_search_left.gif) no-repeat left top;}
 .searchWrap span.br {top:0; right:0; background:url(../img/common/bg_search_right.gif) no-repeat left top;}
 .searchWrap .cont {padding-top:17px; text-align:center;}
-.searchWrap .cont select {padding:1px; height:22px; font:normal 12px dotum; .font:normal 11px Sans-serif; vertical-align:top;}
+.searchWrap .cont select {padding:1px; height:22px; font:normal 12px dotum; font:normal 11px Sans-serif; vertical-align:top;}
 .searchWrap .cont input {#margin:-1px 0; padding:3px 0 0 5px; width:30%; height:17px; border:1px solid #BCBCBC; font-size:13px; vertical-align:top;}
 .searchWrap .cont a {position:relative; cursor:pointer; margin:0; overflow:visible; color:#CDCFD4; padding:1px 6px 0; height:21px; line-height:21px; display:inline-block; border:0; white-space:nowrap; vertical-align:middle; background:url(../img/button/btn_type_01.gif) repeat-x left top;}
 .searchWrap .cont *:hover, .searchWrap .cont span *:active, .searchWrap .cont span *:focus{color:#FFF;}
