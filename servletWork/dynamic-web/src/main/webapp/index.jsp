@@ -9,13 +9,15 @@
 <br/>
 <%--<a href="colorServlet">colorServlet</a>--%>
 <%--<a href="testServlet">testServlet</a>--%>
-<%
-  if (session.getAttribute("user") != null) {
-    response.sendRedirect("board/welcome.jsp");
-  } else {
-    response.sendRedirect("board/login.jsp");
-  }
-%>
+<%--<%--%>
+<%--  if (session.getAttribute("user") != null) {--%>
+<%--    response.sendRedirect("board/welcome.jsp");--%>
+<%--  } else {--%>
+<%--    response.sendRedirect("board/login.jsp");--%>
+<%--  }--%>
+<%--%>--%>
+<a href="write.do?cmd=write">write</a>
+<a href="list.do?cmd=list">list</a>
 
 
 </body>

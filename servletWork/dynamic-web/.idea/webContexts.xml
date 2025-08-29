@@ -8,6 +8,7 @@
         <entry key="file://$PROJECT_DIR$/src/main/webapp/basicJsp/second.jsp" value="file://$PROJECT_DIR$/src/main/webapp/basicJsp" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/basicObject/objectEx2.jsp" value="file://$PROJECT_DIR$/src/main/webapp/basicObject" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/board/login.jsp" value="file://$PROJECT_DIR$/src/main/webapp/board" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/forward/process.jsp" value="file://$PROJECT_DIR$/src/main/webapp/forward" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/usebean/memberCollection.jsp" value="file://$PROJECT_DIR$/src/main/webapp/usebean" />
       </map>
     </option>
