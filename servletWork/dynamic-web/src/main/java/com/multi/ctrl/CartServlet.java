@@ -39,8 +39,6 @@ public class CartServlet  extends HttpServlet {
         if("add".equals(action)){
             Product product=productDB.get(id);
             cart.add(product);
-        }else if("remove".equals(action)){
-            cart.remove(id);
         }
         session.setAttribute("cart",cart);
         response.sendRedirect("cart/cart.jsp");
