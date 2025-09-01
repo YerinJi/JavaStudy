@@ -11,6 +11,18 @@
 
 </head>
 <body >
+<%--
+MVC Model(DTO,VO,DAO,Service)
+--%>
+
+
+
+
+
+
+
+
+
 ${arraylist}
 <div id="wrapper">
     <div id="header">
