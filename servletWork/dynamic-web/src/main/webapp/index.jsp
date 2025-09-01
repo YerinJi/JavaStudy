@@ -16,8 +16,9 @@
 <%--    response.sendRedirect("board/login.jsp");--%>
 <%--  }--%>
 <%--%>--%>
-<a href="write.do?cmd=write">write</a>
+<a href="write.do?cmd=write">write</a> <%--DispatcherServlet의 service 호출 --%>
 <a href="list.do?cmd=list">list</a>
+<a href="ui.do?cmd=loginui">login</a>
 
 
 </body>
