@@ -17,6 +17,14 @@ mvc로 로그인
 
 @WebServlet("*.do") //MVC에서 대장 컨트롤러
 public class DispatcherServlet extends HttpServlet {
+    /*
+    1. 명령줄의 인수를 받는다.
+    2. 명령에 대한 Action을 생성한다.
+    3. 해당 Action을 호출한다. (비즈니스 로직을 수행한다.)
+    4. Action을 수행하고 ActionForWard를 return 한다.
+    5. redirect or forward 여부에 따라 페이지 이동한다.
+    6.
+     */
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
