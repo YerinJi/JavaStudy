@@ -30,6 +30,11 @@ dependencies {
   implementation 'javax.el:javax.el-api:3.0.0' // Expression Language
   implementation 'org.glassfish:javax.el:3.0.0' // EL 구현체
   implementation 'mysql:mysql-connector-java:8.0.30' //jdbc드라이브 연결
+  implementation('javax.servlet:javax.servlet-api:4.0.1')
+  compileOnly 'javax.servlet.jsp:jsp-api:2.1'
+  annotationProcessor 'org.projectlombok:lombok:1.18.26'
+  implementation 'mysql:mysql-connector-java:8.0.30'
+
 }
 
 test {
