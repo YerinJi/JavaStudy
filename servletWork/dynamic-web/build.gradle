@@ -24,6 +24,8 @@ dependencies {
   // 로그(간단)
   implementation 'org.slf4j:slf4j-simple:2.0.13'//추가0903
   annotationProcessor 'org.projectlombok:lombok:1.18.26'
+
+  implementation "org.mindrot:jbcrypt:0.4"
 }
 
 java {
