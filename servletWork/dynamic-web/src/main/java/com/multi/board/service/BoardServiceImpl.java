@@ -14,7 +14,7 @@ public class BoardServiceImpl implements BoardService {
     @Override public PageResult<Board> list(PageRequest pr, String type, String q){
         try{
             int total=dao.count(type,q);
-            List<Board> items=dao.findAll(pr,type,q);
+            List<Board> items=dao.findAll();
             if (items == null) items = Collections.emptyList();
             return new PageResult<>(items,total,pr.getPage(),pr.getSize());
         }catch(SQLException e){
@@ -38,12 +38,15 @@ public class BoardServiceImpl implements BoardService {
         try{
             Validation.requireText(title,1,200,"제목");
             Validation.requireText(content,1,10000,"내용");
-            Board b=new Board(); b.setTitle(title); b.setContent(content); b.setWriterId((int) writerId);
-            return dao.insert(b);
+            Board b=new Board();
+            b.setTitle(title);
+            b.setContent(content);
+            b.setWriterId((int) writerId);
+            dao.insert(b);
         }catch(SQLException e){
             System.out.println("작성오류");
-            return 0L;
         }
+        return writerId;
     }
 
     @Override public void edit(long id, String title, String content, long loginMemberId){
@@ -53,7 +56,6 @@ public class BoardServiceImpl implements BoardService {
             Board origin=dao.findById(id);
             if(origin.getWriterId()!=loginMemberId) System.out.println("작성자만 수정할 수 있습니다.");
             origin.setTitle(title); origin.setContent(content);
-            if(dao.update(origin, loginMemberId)==0) System.out.println("수정에 실패했습니다.");
         }catch(SQLException e){
             System.out.println("수정 오류"); }
     }
@@ -62,7 +64,6 @@ public class BoardServiceImpl implements BoardService {
         try{
             Board origin=dao.findById(id);
             if(origin.getWriterId()!=loginMemberId) System.out.println("작성자만 삭제할 수 있습니다.");
-            if(dao.delete(id, loginMemberId)==0) System.out.println("삭제에 실패했습니다.");
         }catch(SQLException e){
             System.out.println("삭제 오류"); }
     }

@@ -24,63 +24,63 @@ public class BoardDao {
         }
     }
 
-    public List<Board> findAll(PageRequest pr, String type, String q) throws SQLException {
-        String base="SELECT b.id,b.title,b.content,b.writer_id,b.view_cnt,b.created_at,b.updated_at,m.nickname " +
-                "FROM board b JOIN members m ON m.id=b.writer_id";
-        StringBuilder sql=new StringBuilder(base);
-        List<Object> params=new ArrayList<>();
-        if(q!=null && !q.isBlank()){
-            switch (type){
-                case "writer":  sql.append(" WHERE m.nickname LIKE ?"); break;
-                case "content": sql.append(" WHERE b.content LIKE ?"); break;
-                default:        sql.append(" WHERE b.title LIKE ?");
-            }
-            params.add("%"+q+"%");
+    public List<Board> findAll() throws SQLException {
+        Connection conn= DB.getConnection();
+        PreparedStatement ps=conn.prepareStatement("SELECT * FROM board");
+        ResultSet rs=ps.executeQuery();
+        List<Board> list=new ArrayList<>();
+        while(rs.next()){
+            Board board=new Board();
+            board.setId(rs.getInt("id"));
+            board.setTitle(rs.getString("title"));
+            board.setContent(rs.getString("content"));
+            list.add(board);
         }
-        sql.append(" ORDER BY b.created_at DESC LIMIT ? OFFSET ?");
-        try(Connection c=DB.getConnection(); PreparedStatement ps=c.prepareStatement(sql.toString())){
-            int idx=1; for(Object p: params) ps.setObject(idx++, p);
-            ps.setInt(idx++, pr.getSize()); ps.setInt(idx, pr.getOffset());
-            List<Board> list=new ArrayList<>();
-            try(ResultSet rs=ps.executeQuery()){
-                while(rs.next()){
-                    Board b=map(rs); b.setWriterNickname(rs.getString("nickname")); list.add(b);
-                }
-            }
-            return list;
-        }
+        return list;
     }
 
     public Board findById(long id) throws SQLException {
-        String sql="SELECT b.id,b.title,b.content,b.writer_id,b.view_cnt,b.created_at,b.updated_at,m.nickname " +
-                "FROM board b JOIN members m ON m.id=b.writer_id WHERE b.id=?";
-        try(Connection c=DB.getConnection(); PreparedStatement ps=c.prepareStatement(sql)){
-            ps.setLong(1, id); try(ResultSet rs=ps.executeQuery()){
-                if(!rs.next()) return null; Board b=map(rs); b.setWriterNickname(rs.getString("nickname")); return b;
-            }
+        Connection conn =  DB.getConnection();
+        PreparedStatement ps=conn.prepareStatement("SELECT * FROM board WHERE id = ?");
+        ps.setLong(1,id);
+        ResultSet rs=ps.executeQuery();
+        Board board=new Board();
+        while(rs.next()){
+            board.setId(rs.getInt("id"));
+            board.setTitle(rs.getString("title"));
+            board.setContent(rs.getString("content"));
+            return  board;
         }
+        return null;
     }
 
-    public long insert(Board b) throws SQLException {
-        String sql="INSERT INTO board(title,content,writer_id) VALUES(?,?,?)";
-        try(Connection c=DB.getConnection(); PreparedStatement ps=c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
-            ps.setString(1,b.getTitle()); ps.setString(2,b.getContent()); ps.setLong(3,b.getWriterId());
-            ps.executeUpdate(); try(ResultSet k=ps.getGeneratedKeys()){ return k.next()? k.getLong(1):0L; }
-        }
+    public void insert(Board b) throws SQLException {
+        Connection conn = DB.getConnection();
+        PreparedStatement ps =  conn.prepareStatement("INSERT INTO board (title,content) VALUES (?,?)");
+        ps.setString(1, b.getTitle());
+        ps.setString(2, b.getContent());
+        ps.executeUpdate();
     }
 
-    public int update(Board b, long writerId) throws SQLException {
+    public void update(Board b, long writerId) throws SQLException {
         String sql="UPDATE board SET title=?, content=? WHERE id=? AND writer_id=?";
-        try(Connection c=DB.getConnection(); PreparedStatement ps=c.prepareStatement(sql)){
-            ps.setString(1,b.getTitle()); ps.setString(2,b.getContent());
-            ps.setLong(3,b.getId()); ps.setLong(4,writerId); return ps.executeUpdate();
+        try(Connection c=DB.getConnection();
+            PreparedStatement ps=c.prepareStatement(sql)){
+            ps.setString(1,b.getTitle());
+            ps.setString(2,b.getContent());
+            ps.setLong(3,b.getId());
+            ps.setLong(4,writerId);
+            ps.executeUpdate();
         }
     }
 
-    public int delete(long id, long writerId) throws SQLException {
+    public void delete(long id, long writerId) throws SQLException {
         String sql="DELETE FROM board WHERE id=? AND writer_id=?";
-        try(Connection c=DB.getConnection(); PreparedStatement ps=c.prepareStatement(sql)){
-            ps.setLong(1,id); ps.setLong(2,writerId); return ps.executeUpdate();
+        try(Connection c=DB.getConnection();
+            PreparedStatement ps=c.prepareStatement(sql)){
+            ps.setLong(1,id);
+            ps.setLong(2,writerId);
+            ps.executeUpdate();
         }
     }
 
@@ -91,11 +91,18 @@ public class BoardDao {
                 "FROM board b JOIN members m ON m.id=b.writer_id WHERE b.id=?";
         try(Connection c=DB.getConnection()){
             c.setAutoCommit(false);
-            try(PreparedStatement ps1=c.prepareStatement(up)){ ps1.setLong(1,id); ps1.executeUpdate(); }
+            try(PreparedStatement ps1=c.prepareStatement(up)){
+                ps1.setLong(1,id);
+                ps1.executeUpdate();
+            }
             Board b=null;
             try(PreparedStatement ps2=c.prepareStatement(sel)){
-                ps2.setLong(1,id); try(ResultSet rs=ps2.executeQuery()){
-                    if(rs.next()){ b=map(rs); b.setWriterNickname(rs.getString("nickname")); }
+                ps2.setLong(1,id);
+                try(ResultSet rs=ps2.executeQuery()){
+                    if(rs.next()){
+                        b=map(rs);
+                        b.setWriterNickname(rs.getString("nickname"));
+                    }
                 }
             }
             c.commit(); return b;
