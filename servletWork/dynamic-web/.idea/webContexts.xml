@@ -10,6 +10,8 @@
         <entry key="file://$PROJECT_DIR$/src/main/webapp/board/login.jsp" value="file://$PROJECT_DIR$/src/main/webapp/board" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/eljstl/eljstl1.jsp" value="file://$PROJECT_DIR$/src/main/webapp/eljstl" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/forward/process.jsp" value="file://$PROJECT_DIR$/src/main/webapp/forward" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/jquery/ajaxJQuery/ajax1.jsp" value="file://$PROJECT_DIR$/src/main/webapp/jquery/ajaxJQuery" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/jquery/ajaxJQuery/ajax2.jsp" value="file://$PROJECT_DIR$/src/main/webapp/jquery/ajaxJQuery" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/usebean/memberCollection.jsp" value="file://$PROJECT_DIR$/src/main/webapp/usebean" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/view/mvclist.jsp" value="file://$PROJECT_DIR$/src/main/webapp/view" />
       </map>
