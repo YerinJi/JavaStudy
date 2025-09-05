@@ -9,13 +9,13 @@
          http://www.springframework.org/schema/mvc       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!-- @Controller 스캔 -->
-    <context:component-scan base-package="com.example.web" />
+    <context:component-scan base-package="com.multi.*" />
 
     <!-- @RequestMapping 등 MVC 기본 활성화 -->
     <mvc:annotation-driven />
 
     <!-- 정적리소스 매핑 (/resources/** → /resources/) -->
-    <mvc:resources mapping="/resources/**" location="/resources/" />
+    <mvc:resources mapping="/resources/**" location="/*/" />
 
     <!-- JSP 뷰리졸버 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
