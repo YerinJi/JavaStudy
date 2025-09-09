@@ -22,6 +22,8 @@ dependencies {
 
     // 로그(간단)
     implementation 'org.slf4j:slf4j-simple:2.0.13'
+
+    compileOnly 'org.projectlombok:lombok:1.18.26'
 }
 
 war { archiveFileName = 'jsp-mybatis-crud.war' }
