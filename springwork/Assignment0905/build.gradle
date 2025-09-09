@@ -3,32 +3,26 @@ plugins {
     id 'war'
 }
 
-group 'org.scoula'
-version '1.0-SNAPSHOT'
+group = 'com.multi'
+version = '1.0.0'
+sourceCompatibility = '11'
 
-repositories {
-    mavenCentral()
-}
-
-ext {
-    junitVersion = '5.11.0'
-}
-
-sourceCompatibility = '17'
-targetCompatibility = '17'
-
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
+repositories { mavenCentral() }
 
 dependencies {
+    // Servlet/JSP/JSTL
+    providedCompile 'javax.servlet:javax.servlet-api:4.0.1'
+    providedCompile 'javax.servlet.jsp:javax.servlet.jsp-api:2.3.3'
     implementation 'javax.servlet:jstl:1.2'
-    implementation 'javax.servlet:javax.servlet-api:4.0.1' // 서블릿 필수
-    implementation 'javax.el:javax.el-api:3.0.0' // Expression Language
-    implementation 'org.glassfish:javax.el:3.0.0' // EL 구현체
+    implementation 'org.glassfish:javax.el:3.0.0'
+
+    // MyBatis + MySQL
+    implementation 'org.mybatis:mybatis:3.5.15'
+    implementation 'mysql:mysql-connector-java:8.4.0'
+
+    // 로그(간단)
+    implementation 'org.slf4j:slf4j-simple:2.0.13'
 }
 
+war { archiveFileName = 'jsp-mybatis-crud.war' }
 
-test {
-    useJUnitPlatform()
-}
