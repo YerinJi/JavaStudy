@@ -1,4 +1,4 @@
-package com.multi.di1;
+package com.multi.di.di1;
 
 public class Person {
     private String name;

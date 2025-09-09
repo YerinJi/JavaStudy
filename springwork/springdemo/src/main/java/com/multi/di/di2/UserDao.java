@@ -1,4 +1,4 @@
-package com.multi.di2;
+package com.multi.di.di2;
 
 public interface UserDao {
     public void insert();

@@ -1,6 +1,6 @@
 package com.multi.app;
 
-import com.multi.di1.Person;
+import com.multi.di.di1.Person;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
