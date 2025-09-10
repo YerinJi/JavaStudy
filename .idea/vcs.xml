@@ -2,5 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/springwork/JavaStudy" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/springwork/MybatisProject" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/springwork/springdemo" vcs="Git" />
   </component>
 </project>
