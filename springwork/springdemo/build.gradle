@@ -22,6 +22,10 @@ dependencies {
   implementation 'org.mybatis:mybatis:3.5.15'//추가 0903
   implementation 'mysql:mysql-connector-java:8.0.30'//jdbc드라이브 연결
   compileOnly 'org.projectlombok:lombok:1.18.26'
+
+  implementation 'org.aspectj:aspectjrt:1.9.22'
+  runtimeOnly  'org.aspectj:aspectjweaver:1.9.22'
+  implementation 'org.springframework:spring-aop:5.3.30'
   // 로그(간단)
   implementation 'org.slf4j:slf4j-simple:2.0.13'//추가0903
   annotationProcessor 'org.projectlombok:lombok:1.18.26'
