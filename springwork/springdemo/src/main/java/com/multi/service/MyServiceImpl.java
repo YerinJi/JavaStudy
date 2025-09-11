@@ -24,7 +24,13 @@ public class MyServiceImpl implements MyService {
 
     @Override
     public String performAction(String name) {
+        System.out.println("performAction 비즈니스로직 수행");
         return prefix + " " + myRepository.getMessage(name);
+    }
+
+    @Override
+    public void showMessage() { //메소드 오버라이드 추가
+        System.out.println("ShowMessge");
     }
 }
 
