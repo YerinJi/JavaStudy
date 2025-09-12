@@ -1,5 +1,7 @@
 package com.multi.aop.aop2;
 
+import com.multi.di.di4.Person;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -9,4 +11,8 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @EnableAspectJAutoProxy
 public class AspectConfig {
 
+    @Bean(name = "pop")
+    public Person getPerson(){
+        return new Person();
+    }
 }

@@ -7,11 +7,15 @@ public class ActionServiceImp implements ActionService {
 
     @Override
     public void showMessage() {
+        //error
+//        int rs=10/0; //Exception 발생
+
         System.out.println("showMessage 비즈니스 로직 수행");
     }
 
     @Override
     public void makeProcess() {
+
         System.out.println("makeProcess 비즈니스 로직 수행");
     }
 }
