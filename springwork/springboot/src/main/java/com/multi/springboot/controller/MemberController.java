@@ -1,4 +1,4 @@
-package com.multi.springboot;
+package com.multi.springboot.controller;
 import com.multi.springboot.DTO.Mapper.Member;
 import com.multi.springboot.DTO.Mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
@@ -18,10 +18,4 @@ public class MemberController {
         return "index";
     }
 
-    @GetMapping("/members")
-    public String members(Model model) {
-        List<Member> list = memberMapper.findAll();
-        model.addAttribute("members", list);
-        return "members";
-    }
 }
