@@ -1,0 +1,42 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--    <context:component-scan base-package="com.multi.core"/>-->
+
+<!--생성자 주입-->
+    <bean id="timeProvider" class="com.multi.core.time.SystemTimeProvider">
+        <constructor-arg value="yyyy-MM-dd HH:mm:ss"/>
+    </bean>
+
+    <bean id="ratePolicy" class="com.multi.core.discount.RateDiscountPolicy">
+        <constructor-arg value="10"/>
+    </bean>
+    <bean id="fixPolicy" class="com.multi.core.discount.FixDiscountPolicy">
+        <constructor-arg value="100"/>
+    </bean>
+
+    <bean id="emailNotifier" class="com.multi.core.notify.EmailNotifier"/>
+    <bean id="smsNotifier" class="com.multi.core.notify.SmsNotifier"/>
+
+    <bean id="orderService" class="com.multi.core.order.OrderService">
+        <property name="timeProvider" ref="timeProvider"/>
+        <property name="discountPolicy" ref="ratePolicy"/>
+        <property name="notifiers">
+            <list>
+                <ref bean="emailNotifier"/>
+                <ref bean="smsNotifier"/>
+            </list>
+        </property>
+        <property name="notifierMap">
+            <map>
+                <entry key="email" value-ref="emailNotifier"/>
+                <entry key="sms" value-ref="smsNotifier"/>
+            </map>
+        </property>
+    </bean>
+</beans>
+
