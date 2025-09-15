@@ -46,4 +46,14 @@ public class BoardServiceImpl implements BoardService {
     public void incrementViews(int id) {
         boardMapper.incrementViews(id);
     }
+
+    @Override
+    public int count(String q, String type) {
+        return boardMapper.count(q, type);
+    }
+
+    @Override
+    public List<Board> find(String q, String type, int offset, int limit) {
+        return boardMapper.find(q, type, offset, limit);
+    }
 }

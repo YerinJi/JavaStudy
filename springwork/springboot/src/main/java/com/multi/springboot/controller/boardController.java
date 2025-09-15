@@ -2,11 +2,15 @@ package com.multi.springboot.controller;
 
 import com.multi.springboot.model.Board;
 import com.multi.springboot.service.BoardService;
+import com.multi.springboot.support.Pagination;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class boardController {
@@ -15,10 +19,24 @@ public class boardController {
     public boardController(BoardService boardService) {
         this.boardService = boardService;
     }
-
+    // 목록 + 검색 + 페이징
     @GetMapping("/list")
-    public String list(Model model) {
-        model.addAttribute("boardList", boardService.getAllBoards());
+    public String list(@RequestParam(defaultValue = "1")  int page,
+                       @RequestParam(defaultValue = "10") int size,
+                       @RequestParam(required = false)    String q,
+                       @RequestParam(defaultValue = "titleOrContent") String type,
+                       Model model) {
+
+        int total = boardService.count(q, type);
+        Pagination pagination = new Pagination(page, size, total, 5); // 블록 5개
+
+        List<Board> boards = boardService.find(q, type, pagination.getOffset(),
+                pagination.getSize());
+        model.addAttribute("boardList", boards);
+        model.addAttribute("pagination", pagination);
+        model.addAttribute("q", q == null ? "" : q);
+        model.addAttribute("type", type);
+
         return "list";
     }
 
