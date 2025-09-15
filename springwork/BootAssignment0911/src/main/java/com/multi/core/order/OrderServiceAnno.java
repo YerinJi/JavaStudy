@@ -30,12 +30,12 @@ public class OrderServiceAnno {
         this.timeProvider = timeProvider;
     }
 
-    @Autowired
+    @Autowired(required = false)
     public void setNotifiers(List<Notifier> notifiers) {
         this.notifiers = notifiers;
     }
 
-    @Autowired
+    @Autowired(required = false)
     public void setNotifierMap(Map<String, Notifier> notifierMap) {
         this.notifierMap = notifierMap;
     }

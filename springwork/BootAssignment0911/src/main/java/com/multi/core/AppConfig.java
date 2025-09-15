@@ -8,6 +8,7 @@ import com.multi.core.notify.SmsNotifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 
+@Profile("xml")
 @Configuration
 @ComponentScan(basePackages = "com.multi.core")
 public class AppConfig {

@@ -10,6 +10,8 @@ import com.multi.core.time.SystemTimeProvider;
 import com.multi.core.time.TimeProvider;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
+
+@Profile("anno")
 @Configuration
 @ComponentScan(basePackages = "com.multi.core")
 @PropertySource("classpath:application.properties")
