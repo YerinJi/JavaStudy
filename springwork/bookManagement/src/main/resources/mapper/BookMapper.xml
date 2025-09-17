@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.multi.bookmanagement.mapper.BookMapper">
+    <resultMap id="BookMap" type="com.multi.bookmanagement.model.Book">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="author" column="author"/>
+        <result property="publisher" column="publisher"/>
+        <result property="price" column="price"/>
+        <result property="createdAt" column="created_at" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+    </resultMap>
+
+    <select id="getAllBooks" resultType="com.multi.bookmanagement.model.Book">
+        SELECT * FROM book
+        ORDER BY id DESC
+    </select>
+
+    <select id="getBookById" parameterType="int" resultType="com.multi.bookmanagement.model.Book">
+        SELECT * FROM book
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insertBook" parameterType="com.multi.bookmanagement.model.Book">
+        INSERT INTO book (title, author, publisher, price)
+        VALUES (#{title},#{author},#{publisher},#{price})
+    </insert>
+
+    <update id="updateBook" parameterType="com.multi.bookmanagement.model.Book">
+        UPDATE book
+        SET title = #{title}, author = #{author}, publisher = #{publisher}, price = #{price}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteBook" parameterType="int">
+        DELETE FROM book
+        WHERE id = #{id}
+    </delete>
+
+    <select id="count" resultType="int">
+        SELECT COUNT(*)
+        FROM book
+        <where>
+            <if test="q != null and q != ''">
+                <choose>
+                    <when test="type == 'title'">
+                        AND title LIKE CONCAT('%', #{q}, '%')
+                    </when>
+                    <when test="type == 'author'">
+                        AND author LIKE CONCAT('%', #{q}, '%')
+                    </when>
+                    <when test="type == 'publisher'">
+                        AND publisher LIKE CONCAT('%', #{q}, '%')
+                    </when>
+                </choose>
+            </if>
+        </where>
+    </select>
+
+    <select id="find" resultType="com.multi.bookmanagement.model.Book">
+        SELECT id, title, author, publisher, price, created_at
+        FROM book
+        <where>
+            <if test="q != null and q != ''">
+                <choose>
+                    <when test="type == 'title'">
+                        AND title LIKE CONCAT('%', #{q}, '%')
+                    </when>
+                    <when test="type == 'author'">
+                        AND author LIKE CONCAT('%', #{q}, '%')
+                    </when>
+                    <when test="type == 'publisher'">
+                        AND publisher LIKE CONCAT('%', #{q}, '%')
+                    </when>
+                </choose>
+            </if>
+        </where>
+        ORDER BY id DESC
+        LIMIT #{offset}, #{limit}
+    </select>
+
+</mapper>

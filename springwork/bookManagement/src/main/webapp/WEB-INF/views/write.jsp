@@ -1,0 +1,26 @@
+<%@ include file="header.jsp" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<div class="container mt-4">
+    <h2 class="mb-4">새 도서 작성</h2>
+    <form action="write" method="post">
+        <div class="mb-3">
+            <label for="title" class="form-label">제목</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+        <div class="mb-3">
+            <label for="author" class="form-label">저자</label>
+            <input type="text" class="form-control" id="author" name="author" required>
+        </div>
+        <div class="mb-3">
+            <label for="publisher" class="form-label">출판사</label>
+            <input type="text" class="form-control" id="publisher" name="publisher" required>
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">가격</label>
+            <input type="text" class="form-control" id="price" name="price" required>
+        </div>
+        <button type="submit" class="btn btn-primary">저장</button>
+        <a href="list" class="btn btn-secondary">취소</a>
+    </form>
+</div>
+<%@ include file="footer.jsp" %>
