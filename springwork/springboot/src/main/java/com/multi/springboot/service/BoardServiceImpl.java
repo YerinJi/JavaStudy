@@ -1,21 +1,23 @@
 package com.multi.springboot.service;
 
+
 import com.multi.springboot.mapper.BoardMapper;
 import com.multi.springboot.model.Board;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import java.util.List;
 
 @RequiredArgsConstructor
 @Service
 public class BoardServiceImpl implements BoardService {
+
     private final BoardMapper boardMapper;
 
 //    public BoardServiceImpl(BoardMapper boardMapper) {
 //        this.boardMapper = boardMapper;
 //    }
-
 
     @Override
     public List<Board> getAllBoards() {
@@ -45,15 +47,5 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public void incrementViews(int id) {
         boardMapper.incrementViews(id);
-    }
-
-    @Override
-    public int count(String q, String type) {
-        return boardMapper.count(q, type);
-    }
-
-    @Override
-    public List<Board> find(String q, String type, int offset, int limit) {
-        return boardMapper.find(q, type, offset, limit);
     }
 }

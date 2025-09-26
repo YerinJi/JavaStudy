@@ -11,6 +11,4 @@ public interface BoardService {
     void updateBoard(Board board);
     void deleteBoard(int id);
     void incrementViews(int id);
-    int count(String q, String type);
-    List<Board> find(String q, String type, int offset, int limit);
 }

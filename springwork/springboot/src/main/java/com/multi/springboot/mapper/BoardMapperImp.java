@@ -35,13 +35,13 @@ public class BoardMapperImp implements BoardMapper {
 
     }
 
-    @Override
-    public int count(String q, String type) {
-        return 0;
-    }
-
-    @Override
-    public List<Board> find(String q, String type, int offset, int limit) {
-        return List.of();
-    }
+//    @Override
+//    public int count(String q, String type) {
+//        return 0;
+//    }
+//
+//    @Override
+//    public List<Board> find(String q, String type, int offset, int limit) {
+//        return List.of();
+//    }
 }

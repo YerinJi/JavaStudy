@@ -13,5 +13,8 @@ public class HomeController {
     public String restbase(){
         return "restbase";
     }
-
+    @GetMapping("/script")
+    public String script(){
+        return "script";
+    }
 }
