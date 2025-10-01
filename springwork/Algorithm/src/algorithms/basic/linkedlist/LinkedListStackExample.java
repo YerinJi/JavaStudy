@@ -1,13 +1,12 @@
-package algorithms.basic;
+package algorithms.basic.linkedlist;
 
-
-class Node{
-    int data;
-    Node next;
-    public Node(int data) {
-        this.data = data;
-    }
-}
+//class Node{
+//    int data;
+//    Node next;
+//    public Node(int data) {
+//        this.data = data;
+//    }
+//}
 
 public class LinkedListStackExample {
     public static void main(String[] args) {

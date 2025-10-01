@@ -1,4 +1,4 @@
-package algorithms.basic;
+package algorithms.basic.queue;
 
 
 public class ArrayQueue {

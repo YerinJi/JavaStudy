@@ -1,4 +1,4 @@
-package algorithms.basic;
+package algorithms.basic.linkedlist;
 
 class LinkedListStack{
     private Node top;

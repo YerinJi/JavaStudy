@@ -1,4 +1,4 @@
-package algorithms.linkedlist;
+package algorithms.basic.linkedlist;
 
 class Node{// new Node()  data|next
     int data;

@@ -1,4 +1,4 @@
-package algorithms.linkedlist;
+package algorithms.basic.linkedlist;
 
 public class DoubleLinkedList {
     class Node{

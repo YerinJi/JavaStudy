@@ -1,4 +1,4 @@
-package algorithms.queue;
+package algorithms.basic.queue;
 
 class Node{// new Node()  data|next
     int data;
